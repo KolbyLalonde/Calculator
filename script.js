@@ -17,41 +17,46 @@ function divide(a, b) {
     return a / b;
 }
 
-// Testing basic math functions
-console.log(add(5,5));
-console.log(subtract(5,5));
-console.log(multiply(5,5));
-console.log(divide(8.3,5));
-
-
-// Operate function
-function operate(op, a, b) {
-    if(op === "+"){
-        return add(a,b);
+function operate() {
+    if(object.operand === "+"){
+        display.textContent = add(parseInt(object.numOne), parseInt(object.numTwo));
     }
-    else if(op === "-"){
-        return subtract(a,b);
+    else if(object.operand === "-"){
+        display.textContent = subtract(parseInt(object.numOne), parseInt(object.numTwo));
     }
-    else if(op === "*"){
-        return multiply(a,b);
+    else if(object.operand === "*"){
+        display.textContent = multiply(parseInt(object.numOne), parseInt(object.numTwo));
     }
-    else if(op === "/"){
-        return divide(a,b);
+    else if(object.operand === "/"){
+        display.textContent = divide(parseInt(object.numOne), parse(object.numTwo));
     }
     else {
-        return "ERROR!";
+        display.textContent = "ERROR!";
     }
 }
 
-// Testing operate 
-console.log(operate("+",4,4));
-console.log(operate("-",4,4));
-console.log(operate("*",4,4));
-console.log(operate("/",4,4));
+function intermediateOperate() {
+    if(object.operand === "+"){
+        display.textContent = add(parseInt(object.numOne), parseInt(object.numTwo));
+    }
+    else if(object.operand === "-"){
+        display.textContent = subtract(parseInt(object.numOne), parseInt(object.numTwo));
+    }
+    else if(object.operand === "*"){
+        display.textContent = multiply(parseInt(object.numOne), parseInt(object.numTwo));
+    }
+    else if(object.operand === "/"){
+        display.textContent = divide(parseInt(object.numOne), parse(object.numTwo));
+    }
+    else {
+        display.textContent = "ERROR!";
+    }
+}
+
+// Intermediate Operate Function
 
 // object used to store user number 1, operand and number 2
-let Object = {}
-
+let object = {}
 
 // Setting up display 
 let display = document.getElementById("interface");
@@ -90,22 +95,253 @@ sevenButton.addEventListener("click", sevenNum);
 eightButton.addEventListener("click", eightNum);
 nineButton.addEventListener("click", nineNum);
 zeroButton.addEventListener("click", zeroNum);
-// equalButton.addEventListener("click", operate);
+equalButton.addEventListener("click", operate);
 clearButton.addEventListener("click", clear);
 
 // Creating button functions after corresponding click
-function addOp(){ display.textContent += " + "; }
-function subOp(){ display.textContent += " - "; }
-function multOp(){ display.textContent += " x "; }
-function divOp(){ display.textContent += " / "; }
-function oneNum(){ display.textContent += "1"; }
-function twoNum(){ display.textContent += "2"; }
-function threeNum(){ display.textContent += "3"; }
-function fourNum(){ display.textContent += "4"; }
-function fiveNum(){ display.textContent += "5"; }
-function sixNum(){ display.textContent += "6"; }
-function sevenNum(){ display.textContent += "7"; }
-function eightNum(){ display.textContent += "8"; }
-function nineNum(){ display.textContent += "9"; }
-function zeroNum(){ display.textContent += "0"; }
-function clear(){ display.textContent = ""; }
+function addOp(){ 
+    display.textContent += " + "; 
+    if(("numOne" in object) && ("numTwo" in object) && ("operand" in object)){
+        intermediateOperate();
+    }
+    else{
+        object["operand"] = "+";
+    }
+}
+
+function subOp(){ 
+    display.textContent += " - "; 
+    if(("numOne" in object) && ("numTwo" in object) && ("operand" in object)){
+        intermediateOperate();
+    }
+    else{
+        object["operand"] = "-";
+    }
+}
+
+function multOp(){ 
+    display.textContent += " x "; 
+    if(("numOne" in object) && ("numTwo" in object) && ("operand" in object)){
+        intermediateOperate();
+    }
+    else{
+        object["operand"] = "*";
+    }
+}
+
+function divOp(){ 
+    display.textContent += " / "; 
+    if(("numOne" in object) && ("numTwo" in object) && ("operand" in object)){
+        intermediateOperate();
+    }
+    else{
+        object["operand"] = "/";
+    }
+}
+
+function oneNum(){ 
+    display.textContent += "1"; 
+    if("operand" in object){
+        if("numTwo" in object){
+            object["numTwo"] += "1";
+        }
+        else{
+            object["numTwo"] = "1";
+        }
+    }
+    else{
+        if("numOne" in object){
+            object["numOne"] += "1";
+        }
+        else{
+            object["numOne"] = "1";
+        }
+    }
+}
+
+function twoNum(){ 
+    display.textContent += "2"; 
+    if("operand" in object){
+        if("numTwo" in object){
+            object["numTwo"] += "2";
+        }
+        else{
+            object["numTwo"] = "2";
+        }
+    }
+    else{
+        if("numOne" in object){
+            object["numOne"] += "2";
+        }
+        else{
+            object["numOne"] = "2";
+        }
+    }
+}
+
+function threeNum(){ 
+    display.textContent += "3"; 
+    if("operand" in object){
+        if("numTwo" in object){
+            object["numTwo"] += "3";
+        }
+        else{
+            object["numTwo"] = "3";
+        }
+    }
+    else{
+        if("numOne" in object){
+            object["numOne"] += "3";
+        }
+        else{
+            object["numOne"] = "3";
+        }
+    }
+}
+
+function fourNum(){ 
+    display.textContent += "4";
+    if("operand" in object){
+        if("numTwo" in object){
+            object["numTwo"] += "4";
+        }
+        else{
+            object["numTwo"] = "4";
+        }
+    }
+    else{
+        if("numOne" in object){
+            object["numOne"] += "4";
+        }
+        else{
+            object["numOne"] = "4";
+        }
+    }
+}
+
+function fiveNum(){ 
+    display.textContent += "5";
+    if("operand" in object){
+        if("numTwo" in object){
+            object["numTwo"] += "5";
+        }
+        else{
+            object["numTwo"] = "5";
+        }
+    }
+    else{
+        if("numOne" in object){
+            object["numOne"] += "5";
+        }
+        else{
+            object["numOne"] = "5";
+        }
+    }
+}
+
+function sixNum(){ 
+    display.textContent += "6"; 
+    if("operand" in object){
+        if("numTwo" in object){
+            object["numTwo"] += "6";
+        }
+        else{
+            object["numTwo"] = "6";
+        }
+    }
+    else{
+        if("numOne" in object){
+            object["numOne"] += "6";
+        }
+        else{
+            object["numOne"] = "6";
+        }
+    }
+}
+
+function sevenNum(){ 
+    display.textContent += "7";
+    if("operand" in object){
+        if("numTwo" in object){
+            object["numTwo"] += "7";
+        }
+        else{
+            object["numTwo"] = "7";
+        }
+    }
+    else{
+        if("numOne" in object){
+            object["numOne"] += "7";
+        }
+        else{
+            object["numOne"] = "7";
+        }
+    }
+}
+
+function eightNum(){ 
+    display.textContent += "8"; 
+    if("operand" in object){
+        if("numTwo" in object){
+            object["numTwo"] += "8";
+        }
+        else{
+            object["numTwo"] = "8";
+        }
+    }
+    else{
+        if("numOne" in object){
+            object["numOne"] += "8";
+        }
+        else{
+            object["numOne"] = "8";
+        }
+    }
+}
+
+function nineNum(){ 
+    display.textContent += "9";
+    if("operand" in object){
+        if("numTwo" in object){
+            object["numTwo"] += "9";
+        }
+        else{
+            object["numTwo"] = "9";
+        }
+    }
+    else{
+        if("numOne" in object){
+            object["numOne"] += "9";
+        }
+        else{
+            object["numOne"] = "9";
+        }
+    }
+}
+
+function zeroNum(){ 
+    display.textContent += "0"; 
+    if("operand" in object){
+        if("numTwo" in object){
+            object["numTwo"] += "0";
+        }
+        else{
+            object["numTwo"] = "0";
+        }
+    }
+    else{
+        if("numOne" in object){
+            object["numOne"] += "0";
+        }
+        else{
+            object["numOne"] = "0";
+        }
+    }
+}
+
+function clear(){ 
+    display.textContent = ""; 
+    delete object.numOne;
+    delete object.numTwo;
+    delete object.operand;
+}
