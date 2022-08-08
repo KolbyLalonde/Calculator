@@ -1,0 +1,59 @@
+
+body {
+    background-color: lightgray;
+}
+
+.title{
+    text-align: center;
+    font-size: 40px;
+    margin: 30px;
+}
+
+.frame {
+    background-color: #787878;
+    border: 2px solid black;
+    border-radius: 4px;
+    max-width: 500px;
+    margin: 30px auto;
+    padding-bottom: 20px;
+}
+
+.display {
+    background-color: whitesmoke;
+    border: 2px solid black;
+    border-radius: 4px;
+    max-width: 400px;
+    padding: 30px 30px;
+    margin: 30px auto;
+}
+
+.container{
+    display: grid;
+    justify-items: center;
+    margin: auto auto;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-gap: 10px;
+    max-width: 400px;
+}
+
+.button{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: coral;
+    font-size: 20px;
+    padding: 10px 30px;
+    margin: 5px;
+    border: 2px solid black;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+#add, #subtract, #multiply, #divide {
+    background-color: lightcyan;
+}
+
+#equals, #clear {
+    background-color: blanchedalmond;
+}
+
