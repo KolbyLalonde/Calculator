@@ -1,6 +1,11 @@
 
+/**
+@author Kolby Lalonde
+version: 1.2
+since: 1.0
+*/
 
-// Creating basic math functions
+// Creating the 4 basic math functions
 function add(a, b) {
     return a + b;
 }
@@ -17,45 +22,61 @@ function divide(a, b) {
     return a / b;
 }
 
+/* Operate() - Is a function which preforms a single user input calculation */
 function operate() {
     if(object.operand === "+"){
-        display.textContent = add(parseInt(object.numOne), parseInt(object.numTwo));
+        display.textContent = add(parseFloat(object.numOne), parseFloat(object.numTwo));
+        object["numOne"] = display.textContent;
+        delete object.numTwo;
+        delete object.operand;
     }
     else if(object.operand === "-"){
-        display.textContent = subtract(parseInt(object.numOne), parseInt(object.numTwo));
+        display.textContent = subtract(parseFloat(object.numOne), parseFloat(object.numTwo));
+        object["numOne"] = display.textContent;
+        delete object.numTwo;
+        delete object.operand;
     }
     else if(object.operand === "*"){
-        display.textContent = multiply(parseInt(object.numOne), parseInt(object.numTwo));
+        display.textContent = multiply(parseFloat(object.numOne), parseFloat(object.numTwo));
+        object["numOne"] = display.textContent;
+        delete object.numTwo;
+        delete object.operand;
     }
     else if(object.operand === "/"){
-        display.textContent = divide(parseInt(object.numOne), parse(object.numTwo));
+        display.textContent = divide(parseFloat(object.numOne), parseFloat(object.numTwo));
+        object["numOne"] = display.textContent;
+        delete object.numTwo;
+        delete object.operand;
     }
     else {
         display.textContent = "ERROR!";
     }
 }
 
+/* intermediateOperate() - Is a function which preforms the first of multiple user input calculations */
 function intermediateOperate() {
     if(object.operand === "+"){
-        display.textContent = add(parseInt(object.numOne), parseInt(object.numTwo));
+        object["numOne"] = add(parseInt(object.numOne), parseInt(object.numTwo));
     }
     else if(object.operand === "-"){
-        display.textContent = subtract(parseInt(object.numOne), parseInt(object.numTwo));
+        object["numOne"] = subtract(parseInt(object.numOne), parseInt(object.numTwo));
     }
     else if(object.operand === "*"){
-        display.textContent = multiply(parseInt(object.numOne), parseInt(object.numTwo));
+        object["numOne"] = multiply(parseInt(object.numOne), parseInt(object.numTwo));
     }
     else if(object.operand === "/"){
-        display.textContent = divide(parseInt(object.numOne), parse(object.numTwo));
+        object["numOne"] = divide(parseInt(object.numOne), parse(object.numTwo));
     }
     else {
-        display.textContent = "ERROR!";
+        object["numOne"] = "ERROR!";
     }
+    delete object.numTwo;
+    delete object.operand;
 }
 
-// Intermediate Operate Function
-
-// object used to store user number 1, operand and number 2
+// Creating an object used to store user number 1, operand and number 2 input by the user.
+// if there are multiple calculations number 1 updates to the result of the
+// intermediate calulation.
 let object = {}
 
 // Setting up display 
@@ -98,11 +119,12 @@ zeroButton.addEventListener("click", zeroNum);
 equalButton.addEventListener("click", operate);
 clearButton.addEventListener("click", clear);
 
-// Creating button functions after corresponding click
+// Creating all button functions after a corresponding click
 function addOp(){ 
     display.textContent += " + "; 
     if(("numOne" in object) && ("numTwo" in object) && ("operand" in object)){
         intermediateOperate();
+        object["operand"] = "+";
     }
     else{
         object["operand"] = "+";
@@ -113,6 +135,7 @@ function subOp(){
     display.textContent += " - "; 
     if(("numOne" in object) && ("numTwo" in object) && ("operand" in object)){
         intermediateOperate();
+        object["operand"] = "-";
     }
     else{
         object["operand"] = "-";
@@ -123,6 +146,7 @@ function multOp(){
     display.textContent += " x "; 
     if(("numOne" in object) && ("numTwo" in object) && ("operand" in object)){
         intermediateOperate();
+        object["operand"] = "*";
     }
     else{
         object["operand"] = "*";
@@ -133,6 +157,7 @@ function divOp(){
     display.textContent += " / "; 
     if(("numOne" in object) && ("numTwo" in object) && ("operand" in object)){
         intermediateOperate();
+        object["operand"] = "/";
     }
     else{
         object["operand"] = "/";
@@ -339,6 +364,7 @@ function zeroNum(){
     }
 }
 
+// clear button funtion to return everything to original state.
 function clear(){ 
     display.textContent = ""; 
     delete object.numOne;
